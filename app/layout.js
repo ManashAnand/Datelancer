@@ -5,6 +5,11 @@ import Footer from "../components/Footer";
 import { NextProvider } from "@/redux/NextProvider";
 import { ThemeProvider } from "@/shadcn/ui/ThemeProvider";
 
+import { ToastContainer } from 'react-toastify'
+
+import 'react-toastify/dist/ReactToastify.css';
+
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -16,18 +21,19 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-      <NextProvider>
       <ThemeProvider
           attribute="class"
             defaultTheme="system"
             enableSystem
-      >
+        >
+        <NextProvider>
 
         <Navbar />
         {children}
+        <ToastContainer/>
         <Footer/>
-      </ThemeProvider>
       </NextProvider>
+      </ThemeProvider>
       </body>
     </html>
   );
