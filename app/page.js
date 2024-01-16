@@ -3,18 +3,11 @@ import { Button } from "@/shadcn/ui/button";
 
 import { Calendar } from "@/shadcn/ui/calendar";
 import { useState } from "react";
-
-import { toast } from "react-toastify";
+import { useToast } from "@/shadcn/ui/use-toast";
 
 export default function Home() {
-  const notify = (message) =>
-    toast(message, {
-      position: "bottom-left",
-      autoClose: 5000,
-      theme: "light",
-    });
-
   const [date, setDate] = useState(new Date());
+  const { toast } = useToast();
   return (
     <>
       <section className="text-gray-600 body-font">
@@ -39,24 +32,25 @@ export default function Home() {
               truffaut hexagon try-hard chambray.
             </p>
             <div className="flex justify-center">
-              {/* <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-                Button
-              </button> */}
               <Button
                 variant="secondary"
                 onClick={() => {
                   console.log("working" + date);
                 }}
+                className="mr-4"
               >
                 Button
               </Button>
               <Button
-                variant="primary"
+              className="mr-4"
                 onClick={() => {
-                  notify("Error in logging user, Try again");
+                  toast({
+                    title: "Scheduled: Catch up",
+                    description: "Friday, February 10, 2023 at 5:57 PM",
+                  });
                 }}
               >
-                Button 2
+                Show Toast
               </Button>
               <Calendar
                 mode="single"

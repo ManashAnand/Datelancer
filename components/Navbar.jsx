@@ -1,21 +1,43 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MultiLevelDropdown from "./MultiLevelDropDown";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { DarkBtn } from "@/shadcn/ui/DarkBtn";
+import { useDispatch, useSelector } from "react-redux";
+import { logIn, logOut } from "@/redux/slices/UserSlice";
 
 const Navbar = () => {
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
   const [isChecked, setIsChecked] = useState(true);
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state.user);
+  console.log("from nav")
+  console.log(state)
+
+  useEffect(() => {
+    const oneTimeData =    localStorage.getItem('accessToken')
+    const localData = JSON.parse(oneTimeData)
+    if(localData?.status == 200){
+        dispatch(logIn(localData))
+    }
+    // console.log(localData)
+  },[])
 
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
   };
 
+
+
+  const handleLogout = () => {
+    localStorage.clear();
+    dispatch(logOut());
+  }
+
   const toggleNavbar = () => {
     setIsNavbarOpen(!isNavbarOpen);
-};
+  };
 
   const router = useRouter();
 
@@ -29,76 +51,87 @@ const Navbar = () => {
           {/* <img src="https://flowbite.com/docs/images/logo.svg" className="h-8" alt="Flowbite Logo"/> */}
           <span className="self-center text-3xl  whitespace-nowrap text-black font-bold">
             Date
-            <span className="text-3xl text-yellow-400 ">
-
-            lancer
-            </span>
+            <span className="text-3xl text-yellow-400 ">lancer</span>
           </span>
         </Link>
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse  w-full justify-between sm:w-fit sm:justify-start">
-       
-        <div className=" flex gap-5 justify-center sm:items-center flex-col sm:flex-row items-start">
+          <div className=" flex gap-5 justify-center sm:items-center flex-col sm:flex-row items-start">
             {/* search start */}
-       
-              <button
-                onClick={() => router.push("/login")}
-                type="button"
-                className="focus:outline-none  focus:ring-4  font-medium rounded-lg text-sm px-5 py-2.5 bg-gray-800 text-white border-gray-600 hover:bg-gray-700 hover:border-gray-600 focus:ring-gray-700 mb-5 sm:mb-0"
-              >
-                Login
-              </button>
-              <DarkBtn/>
-              {/* <img
-                className="w-10 h-10 rounded-full border-2 border-black"
-                src="/docs/images/people/profile-picture-5.jpg"
-                alt="Rounded avatar"
-              /> */}
-            
-            
+            {state?.status == 200 ? (
+              <>
+                <button
+                  onClick={handleLogout}
+                  type="button"
+                  className="focus:outline-none  focus:ring-4  font-medium rounded-lg text-sm px-5 py-2.5 bg-gray-800 text-white border-gray-600 hover:bg-gray-700 hover:border-gray-600 focus:ring-gray-700 mb-5 sm:mb-0"
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <>
+                <button
+                  onClick={() => router.push("/login")}
+                  type="button"
+                  className="focus:outline-none  focus:ring-4  font-medium rounded-lg text-sm px-5 py-2.5 bg-gray-800 text-white border-gray-600 hover:bg-gray-700 hover:border-gray-600 focus:ring-gray-700 mb-5 sm:mb-0 mr-5"
+                >
+                  Login
+                </button>
+              </>
+            )}
+           
 
-                {/* <MultiLevelDropdown />
+            {state?.status == 200 && (
+              <>
+                <MultiLevelDropdown />
 
                 <label
-                    for="default-search"
-                    className=" text-sm font-medium text-gray-900 sr-only dark:text-white"
+                  for="default-search"
+                  className=" text-sm font-medium text-gray-900 sr-only dark:text-white"
                 >
-                    Search
+                  Search
                 </label>
                 <div className="relative">
-                    <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                  <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                     <svg
-                        className="w-4 h-4 text-gray-500 dark:text-gray-400"
-                        aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 20 20"
+                      className="w-4 h-4 text-gray-500 dark:text-gray-400"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 20 20"
                     >
-                        <path
+                      <path
                         stroke="currentColor"
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         strokeWidth="2"
                         d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-                        />
+                      />
                     </svg>
-                    </div>
-                    <input
+                  </div>
+                  <input
                     type="search"
                     id="default-search"
                     className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Search Mockups, Logos..."
-                    />
-                    <button
+                  />
+                  <button
                     type="submit"
                     className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                    >
+                  >
                     Search
-                    </button>
-                </div> */}
+                  </button>
+                </div>
 
-        </div>
-
-
+                <img
+                  className="w-10 h-10 rounded-full border-2 border-black mr-5"
+                  src={state?.userDoc?.imageUrl}
+                  alt="Rounded avatar"
+                />
+              </>
+            )}
+          </div>
+          
+          <DarkBtn />
 
           <button
             onClick={toggleNavbar}
@@ -126,8 +159,6 @@ const Navbar = () => {
           </button>
         </div>
 
-
-
         <div
           className={`items-center justify-between w-full md:flex md:w-auto md:order-1 ${
             isNavbarOpen ? "block" : "hidden"
@@ -138,7 +169,7 @@ const Navbar = () => {
             <li>
               <Link
                 href="#"
-                className="block py-2 px-3 hover:text-white hover:bg-blue-700 sm:hover:text-black sm:hover:bg-slate-200 rounded md:bg-transparent md:text-blue-700 md:p-0 "
+                className="block py-2 px-3 dark:text-gray-900  hover:dark:text-white  hover:text-white hover:bg-blue-700 sm:hover:text-black sm:hover:bg-slate-200 rounded md:bg-transparent md:text-blue-700 md:p-0 "
               >
                 Home
               </Link>
@@ -151,13 +182,8 @@ const Navbar = () => {
                 About
               </Link>
             </li>
-
-           
           </ul>
         </div>
-
-
-        
       </div>
     </nav>
   );

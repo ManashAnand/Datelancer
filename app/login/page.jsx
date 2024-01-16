@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { logIn } from '@/redux/slices/UserSlice';
 import Link  from 'next/link';
 import { useForm } from 'react-hook-form';
+import { useToast } from '@/shadcn/ui/use-toast';
 
 const Login = () => {
     
@@ -17,28 +18,47 @@ const Login = () => {
 
     const router = useRouter()
 
+    const { toast } = useToast();
     
   const dispatch = useDispatch()
 
   const handleLogin = async (data) => {
     const email = data?.email;
     const password = data?.password;
+    console.log("watn")
     console.log(email+" "+password);
+    if(email=="" || password==""){
+   
+        toast({
+          title: "Error: Login",
+          description: "Please fill both inputs",
+        });
+    
+      return ;
+    }
     try {
       const data = await axios.post("/api/login",{
         email,password
       })
-      
-      if(data.status == 200){
-        console.log(data?.data?.user)
+      const newData = {
+        status: data.status,
+        userDoc: data?.data?.userDoc
       }
-      console.log(data);
-      localStorage.setItem('accessToken',JSON.stringify(data?.data?.user));
+      if(data.status == 200){
+        console.log(newData)
+      }
+      // console.log(data);
+      localStorage.setItem('accessToken',JSON.stringify(newData));
 
-      dispatch(logIn(data));
+      dispatch(logIn(newData));
       router.push('/');
     } catch (error) {
-        console.log("error is "+error);
+      toast({
+        title: "Error: Login",
+        description: "Password or email doesn't match",
+      });
+
+        console.log(error);
     }
 
   }

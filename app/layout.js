@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { NextProvider } from "@/redux/NextProvider";
 import { ThemeProvider } from "@/shadcn/ui/ThemeProvider";
-
+import { Toaster } from "@/shadcn/ui/toaster"
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -27,6 +27,7 @@ export default function RootLayout({ children }) {
 
         <Navbar />
         {children}
+        <Toaster />
         <Footer/>
       </NextProvider>
       </ThemeProvider>
