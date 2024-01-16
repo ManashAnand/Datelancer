@@ -5,9 +5,6 @@ import Footer from "../components/Footer";
 import { NextProvider } from "@/redux/NextProvider";
 import { ThemeProvider } from "@/shadcn/ui/ThemeProvider";
 
-import { ToastContainer } from 'react-toastify'
-
-import 'react-toastify/dist/ReactToastify.css';
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -30,7 +27,6 @@ export default function RootLayout({ children }) {
 
         <Navbar />
         {children}
-        <ToastContainer/>
         <Footer/>
       </NextProvider>
       </ThemeProvider>
