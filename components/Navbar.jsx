@@ -12,9 +12,6 @@ const Navbar = () => {
   const [isChecked, setIsChecked] = useState(true);
   const dispatch = useDispatch();
   const state = useSelector((state) => state.user);
-  console.log("from nav")
-  console.log(state)
-
   useEffect(() => {
     const oneTimeData =    localStorage.getItem('accessToken')
     const localData = JSON.parse(oneTimeData)

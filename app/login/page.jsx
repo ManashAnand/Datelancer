@@ -48,6 +48,7 @@ const Login = () => {
         console.log(newData)
       }
       // console.log(data);
+      localStorage.clear();
       localStorage.setItem('accessToken',JSON.stringify(newData));
 
       dispatch(logIn(newData));
