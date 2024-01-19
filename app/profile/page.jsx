@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 
-const profile = () => {
+const Profile = () => {
     const state = useSelector((state) => state.user)
     const dispatch = useDispatch();
     console.log(state)
@@ -193,4 +193,4 @@ const profile = () => {
   )
 }
 
-export default profile
+export default Profile
