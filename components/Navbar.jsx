@@ -5,13 +5,17 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { DarkBtn } from "@/shadcn/ui/DarkBtn";
 import { useDispatch, useSelector } from "react-redux";
-import { logIn, logOut } from "@/redux/slices/UserSlice";
+import { logIn } from "@/redux/slices/UserSlice";
 
 const Navbar = () => {
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
   const [isChecked, setIsChecked] = useState(true);
   const dispatch = useDispatch();
   const state = useSelector((state) => state.user);
+  const router = useRouter();
+
+
+
   useEffect(() => {
     const oneTimeData =    localStorage.getItem('accessToken')
     const localData = JSON.parse(oneTimeData)
@@ -27,16 +31,12 @@ const Navbar = () => {
 
 
 
-  const handleLogout = () => {
-    localStorage.clear();
-    dispatch(logOut());
-  }
+ 
 
   const toggleNavbar = () => {
     setIsNavbarOpen(!isNavbarOpen);
   };
 
-  const router = useRouter();
 
   return (
     <nav className="bg-slate-200   w-full z-20  start-0 border-b border-gray-200 ">
@@ -54,17 +54,7 @@ const Navbar = () => {
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse  w-full justify-between sm:w-fit sm:justify-start">
           <div className=" flex gap-5 justify-center sm:items-center flex-col sm:flex-row items-start">
             {/* search start */}
-            {state?.status == 200 ? (
-              <>
-                <button
-                  onClick={handleLogout}
-                  type="button"
-                  className="focus:outline-none  focus:ring-4  font-medium rounded-lg text-sm px-5 py-2.5 bg-gray-800 text-white border-gray-600 hover:bg-gray-700 hover:border-gray-600 focus:ring-gray-700 mb-5 sm:mb-0"
-                >
-                  Logout
-                </button>
-              </>
-            ) : (
+            {state?.status != 200 && (
               <>
                 <button
                   onClick={() => router.push("/login")}
@@ -82,7 +72,7 @@ const Navbar = () => {
                 <MultiLevelDropdown />
 
                 <label
-                  for="default-search"
+                  htmlFor="default-search"
                   className=" text-sm font-medium text-gray-900 sr-only dark:text-white"
                 >
                   Search
@@ -120,9 +110,10 @@ const Navbar = () => {
                 </div>
 
                 <img
-                  className="w-10 h-10 rounded-full border-2 border-black mr-5"
+                  className="w-10 h-10 rounded-full border-2 border-black mr-5 cursor-pointer"
                   src={state?.userDoc?.imageUrl}
                   alt="Rounded avatar"
+                  onClick={() => router.push('/profile')}
                 />
               </>
             )}

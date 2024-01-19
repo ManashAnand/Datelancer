@@ -1,9 +1,29 @@
 "use client";
-import React from 'react'
-import { useSelector } from 'react-redux';
+import { logOut } from '@/redux/slices/UserSlice';
+import { useRouter } from 'next/navigation';
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 
 const profile = () => {
     const state = useSelector((state) => state.user)
+    const dispatch = useDispatch();
+    console.log(state)
+    const router = useRouter()
+
+    useEffect(() => {
+        // console.log("wori")
+        if(state?.status!=200){
+            router.push('/')
+        }
+    },[])
+
+    const handleLogout = () => {
+        localStorage.clear();
+        dispatch(logOut());
+        router.push('/')
+      }
+    
+
     return (
     <>
     <div className="container mx-auto my-5 p-5 ">
@@ -11,7 +31,7 @@ const profile = () => {
     <div className="w-full md:w-3/12 md:mx-2 ">
       <div className="bg-white p-3 border-t-4 border-green-400">
         <div className="image overflow-hidden">
-          <img className="h-16 w-16 rounded-full mx-auto" src={state?.userDoc?.imageUrl} alt />
+          <img className="h-16 w-16 rounded-full mx-auto" src={state?.userDoc?.imageUrl} alt="user profile" />
         </div>
         <h1 className="text-gray-900 font-bold text-xl leading-8 my-1">{state?.userDoc?.name}</h1>
         <h3 className="text-gray-600 font-lg text-semibold leading-6">Owner at Her Company Inc.</h3>
@@ -27,6 +47,13 @@ const profile = () => {
             <span>Member since</span>
             <span className="ml-auto">{state?.userDoc?.createdAt}</span>
           </li>
+          <button
+                  onClick={handleLogout}
+                  type="button"
+                  className="focus:outline-none  focus:ring-4  font-medium rounded-lg text-sm px-5 py-2.5 bg-yellow-600 text-white border-gray-600 hover:bg-gray-700 hover:border-gray-600 focus:ring-gray-700 mb-5 sm:mb-0"
+                >
+                  Logout
+                </button>
         </ul>
       </div>
       <div className="my-4" />
@@ -41,11 +68,11 @@ const profile = () => {
         </div>
         <div className="grid grid-cols-3">
           <div className="text-center my-2">
-            <img className="h-16 w-16 rounded-full mx-auto" src="https://cdn.australianageingagenda.com.au/wp-content/uploads/2015/06/28085920/Phil-Beckett-2-e1435107243361.jpg" alt />
+            <img className="h-16 w-16 rounded-full mx-auto" src="https://cdn.australianageingagenda.com.au/wp-content/uploads/2015/06/28085920/Phil-Beckett-2-e1435107243361.jpg" alt="related profile" />
             <a href="#" className="text-main-color">Kojstantin</a>
           </div>
           <div className="text-center my-2">
-            <img className="h-16 w-16 rounded-full mx-auto" src="https://avatars2.githubusercontent.com/u/24622175?s=60&v=4" alt />
+            <img className="h-16 w-16 rounded-full mx-auto" src="https://avatars2.githubusercontent.com/u/24622175?s=60&v=4" alt="related profile" />
             <a href="#" className="text-main-color">James</a>
           </div>
         
