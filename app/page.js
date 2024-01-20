@@ -1,64 +1,34 @@
-"use client";
-import { Button } from "@/shadcn/ui/button";
-
-import { Calendar } from "@/shadcn/ui/calendar";
-import { useState } from "react";
-import { useToast } from "@/shadcn/ui/use-toast";
-
 export default function Home() {
-  const [date, setDate] = useState(new Date());
-  const { toast } = useToast();
   return (
     <>
-      <section className="text-gray-600 body-font">
+      <section className=" body-font">
         <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
-          <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
+          <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
+            <h1 className="title-font sm:text-4xl text-5xl font-medium dark:text-white text-black tracking-widest mb-8">
+              Meet the
+              <span className="text-red-500 ml-3 block sm:inline">Right</span>
+              <br className="hidden lg:inline-block" />
+              Freelance Talent.
+            </h1>
+            <p className="mb-8 leading-relaxed dark:text-gray-300 text-xl text-black max-w-xl">
+            Save your time by letting our AI algorithm connect you with people who possess the right skill set to get your job done.  
+            </p>
+            {/* <div className="flex justify-center">
+              <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+                Button
+              </button>
+              <button className="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">
+                Button
+              </button>
+            </div> */}
+          </div>
+          <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
             <img
               className="object-cover object-center rounded"
               alt="hero"
               src="https://dummyimage.com/720x600"
             />
-          </div>
-          <div className="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
-            <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium dark:text-white text-gray-900">
-              Before they sold out
-              <br className="hidden lg:inline-block" />
-              readymade gluten
-            </h1>
-            <p className="mb-8 leading-relaxed">
-              Copper mug try-hard pitchfork pour-over freegan heirloom neutra
-              air plant cold-pressed tacos poke beard tote bag. Heirloom echo
-              park mlkshk tote bag selvage hot chicken authentic tumeric
-              truffaut hexagon try-hard chambray.
-            </p>
-            <div className="flex justify-center">
-              <Button
-                variant="secondary"
-                onClick={() => {
-                  console.log("working" + date);
-                }}
-                className="mr-4"
-              >
-                Button
-              </Button>
-              <Button
-              className="mr-4"
-                onClick={() => {
-                  toast({
-                    title: "Scheduled: Catch up",
-                    description: "Friday, February 10, 2023 at 5:57 PM",
-                  });
-                }}
-              >
-                Show Toast
-              </Button>
-              <Calendar
-                mode="single"
-                selected={date}
-                onSelect={setDate}
-                className="rounded-md border"
-              />
-            </div>
+            
           </div>
         </div>
       </section>
