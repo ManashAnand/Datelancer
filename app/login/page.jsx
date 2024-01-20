@@ -143,8 +143,7 @@ const Login = () => {
         <div className="container h-full px-6 py-24">
           <div className="g-6 flex h-full flex-wrap items-center justify-center lg:justify-between">
             <div className="mb-12 md:mb-0 md:w-8/12 lg:w-6/12">
-              {/* <img src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg" className="w-full" alt="Phone image" /> */}
-
+         
               {toggle ? (
                 <>
                   
@@ -198,7 +197,7 @@ const Login = () => {
                   checked={toggle}
                   onChange={(e) => setToggle(!toggle)}
                 />
-                <div className="w-11 h-6 bg-blue-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-red-600"></div>
+                <div className="w-11 h-6 bg-blue-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-ring-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-red-600"></div>
                 <span className="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">
                   {toggle ? "I'm a Recruiter" : "I'm a Freelancer"}
                 </span>

@@ -48,7 +48,7 @@ const Navbar = () => {
           {/* <img src="https://flowbite.com/docs/images/logo.svg" className="h-8" alt="Flowbite Logo"/> */}
           <span className="self-center text-3xl  whitespace-nowrap text-black font-bold">
             Date
-            <span className="text-3xl text-yellow-400 ">lancer</span>
+            <span className="text-3xl text-red-600 ">lancer</span>
           </span>
         </Link>
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse  w-full justify-between sm:w-fit sm:justify-start">
