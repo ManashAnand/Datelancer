@@ -79,7 +79,7 @@ const Register = () => {
         Join Now
       </div>
       <div className=" h-full flex px-10 py-2.5 justify-center items-center   text-center">
-      India's finest talent. Global giants. Unparalleled opportunities. This is DateLancer. Elevate your game.
+      India&apos;s finest talent. Global giants. Unparalleled opportunities. This is DateLancer. Elevate your game.
       </div>
       {/* main register */}
 
@@ -97,7 +97,7 @@ const Register = () => {
               onClick={() => setRole(false)}
               >
             </div>
-            <div className=" ">I'm looking for clients.</div>
+            <div className=" ">I&apos;m looking for clients.</div>
           </div>
           <div className=" flex gap-2">
             <div className={`w-0 h-0 
@@ -107,7 +107,7 @@ const Register = () => {
               onClick={() => setRole(true)}
               >
             </div>
-            <div className="">I'm looking for talent.</div>
+            <div className="">I&apos;m looking for talent.</div>
           </div>
         </div>
 

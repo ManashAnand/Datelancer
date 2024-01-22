@@ -182,7 +182,7 @@ const Login = () => {
                 <p
                   className="text-sky-300"
                 >
-                  Doesn&nbsp;t have an account?
+                  Doesn&apos;t have an account?
                    <Link href='/register' className=" text-white cursor-pointer transition duration-150 ease-in-out hover:text-sky-500 focus:text-sky-300 ml-8 bg-yellow-400 p-2 rounded-md">
                    Register
                   </Link>
