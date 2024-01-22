@@ -8,16 +8,18 @@ const secret  = process.env.BCRYPT_SECRET;
 // console.log(secret)
 
 export async function POST(req) {
-  let { name, email, password, imageUrl } =
+  let { username, email, password,role  } =
     await req.json();
   await connectDB();
   
     try {
+        const userRole = role ? "HR":"Freelancer" ;
         const user = await UserModel.create({
-           name,
+          username,
            email,
            password: bcrypt.hashSync(password, salt),
-           imageUrl,
+          role:userRole
+        
          });
          return NextResponse.json({ user }, { status: 200 }, { message: "User Registered" },);
          } catch (error) {
