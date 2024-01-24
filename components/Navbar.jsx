@@ -39,7 +39,7 @@ const Navbar = () => {
 
 
   return (
-    <nav className="bg-slate-200   w-full z-20  start-0 border-b border-gray-200 ">
+    <nav className="bg-slate-200   w-full z-20  start-0 border-b border-gray-200 min-h-[80px]">
       <div className=" flex flex-wrap items-center justify-between mx-auto p-4">
         <Link
           href="/"
