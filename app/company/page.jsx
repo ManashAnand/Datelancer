@@ -4,13 +4,14 @@ import Link from "next/link";
 import React, { useState } from "react";
 
 import Dropdown from "@/shadcn/ui/DropdownMenuShadCN";
+import { Separator } from "@/shadcn/ui/separator"
 
+import Image from "next/image";
+
+import greet from "../assets/greet2.png";
 
 const Company = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
-
-
-
 
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen);
@@ -90,8 +91,24 @@ const Company = () => {
                 href="#"
                 className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
               >
+                <svg
+                    className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+               
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75"
+                  />
+                </svg>
 
-              <Dropdown/>
+                <Dropdown />
               </Link>
             </li>
             <li>
@@ -132,26 +149,188 @@ const Company = () => {
                 </span>
               </Link>
             </li>
-          
           </ul>
         </div>
       </aside>
 
-      <button type="button" className="ml-6 mt-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-      onClick={toggleSidebar}>
-      Open Sidebar
-      <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-      </svg>
+          <div className="bg-[#F2EFE8] dark:bg-[#020817]">
+            
+      <button
+        type="button"
+        className="ml-6 mt-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        onClick={toggleSidebar}
+      >
+        Open Sidebar
+        <svg
+          className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 14 10"
+        >
+          <path
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M1 5h12m0 0L9 1m4 4L9 9"
+          />
+        </svg>
       </button>
 
-      <div className=" flex flex-col sm:flex-row bg-[#F2EFE8] dark:bg-transparent">
-        <div className="sm:w-2/3  w-full ">
-          <div className=" flex justify-between items-center flex-col-reverse sm:flex-row m-5 p-5 border rounded-md bg-white">
-            adsf
-               </div>
-        </div>
-      </div>
+      <div className=" flex justify-between items-center flex-col-reverse sm:flex-row m-5 p-5 border rounded-md bg-white">
+            <div className="min-w-[50%] ">
+              <div className="text-2xl font-semibold dark:text-black">
+                Welcome back, Company Name!
+              </div>
+              <div className=" dark:text-black">
+                Congratulations on becoming a member!
+              </div>
+              <button type="button" className="mt-6 text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">
+                        Complete profile
+                        <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                        </svg>
+                        </button>
+            </div>
+            <div className=" w-full   flex sm:justify-end justify-between">
+              <Image src={greet} height={200} width={200} />
+            </div>
+          </div>
+
+
+          <div className=" flex gap-8 items-center flex-col-reverse sm:flex-row m-5 p-5 border rounded-md bg-white">
+            <div className="w-60 h-36 p-5   border flex flex-col items-start rounded-md">
+                <div className=" text-black flex  w-full justify-between items-center">
+                  <div>Open Projects</div>
+                  <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                        </svg>
+                </div>
+                <div className=" text-black font-semibold w-full h-full flex items-center text-3xl">
+                  28
+                </div>
+             </div>
+
+             <div className="w-60 h-36 p-5   border flex flex-col items-start rounded-md">
+                <div className=" text-black flex  w-full justify-between items-center">
+                  <div>In Progress Projects</div>
+                  <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                        </svg>
+                </div>
+                <div className=" text-black font-semibold w-full h-full flex items-center text-3xl">
+                  01
+                </div>
+             </div>
+
+             <div className="w-60 h-36 p-5   border flex flex-col items-start rounded-md">
+                <div className=" text-black flex  w-full justify-between items-center">
+                  <div>Closed Projects</div>
+                  <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                        </svg>
+                </div>
+                <div className=" text-black font-semibold w-full h-full flex items-center text-3xl">
+                  03
+                </div>
+             </div>
+          </div>
+
+          <div className="m-5 text-2xl font-semibold">Open Projects</div>
+
+          <div className=" flex gap-8 items-center flex-col-reverse sm:flex-row m-5 p-5 border rounded-md bg-white">
+           <div className="flex gap-4">Select Project    <Separator orientation="vertical"/> India Business Head</div>
+          </div>
+
+          <div className=" flex flex-col gap-8 items-center m-5 p-5 border rounded-md bg-white">
+
+             <div className="w-full flex flex-col gap-8 items-center sm:flex-row m-5 p-5 border rounded-md bg-white">
+
+            <div className="w-full h-36 p-5   border flex flex-col items-start rounded-md">
+                <div className=" text-black flex  w-full justify-between items-center">
+                  <div>Open Projects</div>
+                  <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                        </svg>
+                </div>
+                <div className=" text-black font-semibold w-full h-full flex items-center text-3xl">
+                  28
+                </div>
+             </div>
+
+             <div className="w-full h-36 p-5   border flex flex-col items-start rounded-md">
+                <div className=" text-black flex  w-full justify-between items-center">
+                  <div>In Progress Projects</div>
+                  <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                        </svg>
+                </div>
+                <div className=" text-black font-semibold w-full h-full flex items-center text-3xl">
+                  01
+                </div>
+             </div>
+
+             <div className="w-full h-36 p-5   border flex flex-col items-start rounded-md">
+                <div className=" text-black flex  w-full justify-between items-center">
+                  <div>Closed Projects</div>
+                  <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                        </svg>
+                </div>
+                <div className=" text-black font-semibold w-full h-full flex items-center text-3xl">
+                  03
+                </div>
+             </div>
+             </div>
+
+             <div className="w-full flex flex-col gap-8 items-center sm:flex-row p-5 border rounded-md bg-white">
+
+             <div className="w-full h-36 p-5   border flex flex-col items-start rounded-md">
+                <div className=" text-black flex  w-full justify-between items-center">
+                  <div>Open Projects</div>
+                  <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                        </svg>
+                </div>
+                <div className=" text-black font-semibold w-full h-full flex items-center text-3xl">
+                  28
+                </div>
+             </div>
+
+             <div className="w-full h-36 p-5   border flex flex-col items-start rounded-md">
+                <div className=" text-black flex  w-full justify-between items-center">
+                  <div>In Progress Projects</div>
+                  <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                        </svg>
+                </div>
+                <div className=" text-black font-semibold w-full h-full flex items-center text-3xl">
+                  01
+                </div>
+             </div>
+                </div>
+
+          </div>
+              <div className="pt-10 bg-[#F2EFE8] dark:bg-[#020817]"></div>
+
+
+          
+
+          
+
+
+
+
+
+
+
+
+
+
+          
+          </div>
+
     </>
   );
 };

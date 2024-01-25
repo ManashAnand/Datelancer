@@ -33,9 +33,10 @@ import {
   
   export default function DropdownMenuShadCN() {
     return (
-      <DropdownMenu>
+      <DropdownMenu className="bg-red-500">
         <DropdownMenuTrigger asChild>
-          <Button variant="outline">Open</Button>
+        
+          <div className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">Projects</div>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-56">
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
