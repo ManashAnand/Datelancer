@@ -153,7 +153,7 @@ const Company = () => {
         </div>
       </aside>
 
-          <div className="bg-[#F2EFE8] dark:bg-[#020817]">
+          <div className="bg-[#F2EFE8] dark:bg-[#020817] dark:text-black">
             
       <button
         type="button"
@@ -202,7 +202,7 @@ const Company = () => {
           <div className=" flex gap-8 items-center flex-col-reverse sm:flex-row m-5 p-5 border rounded-md bg-white">
             <div className="w-60 h-36 p-5   border flex flex-col items-start rounded-md">
                 <div className=" text-black flex  w-full justify-between items-center">
-                  <div>Open Projects</div>
+                  <div className="">Open Projects</div>
                   <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
                         </svg>
@@ -237,7 +237,7 @@ const Company = () => {
              </div>
           </div>
 
-          <div className="m-5 text-2xl font-semibold">Open Projects</div>
+          <div className="m-5 text-2xl font-semibold dark:text-white">Open Projects</div>
 
           <div className=" flex gap-8 items-center flex-col-reverse sm:flex-row m-5 p-5 border rounded-md bg-white">
            <div className="flex gap-4">Select Project    <Separator orientation="vertical"/> India Business Head</div>
@@ -245,10 +245,10 @@ const Company = () => {
 
           <div className=" flex flex-col gap-8 items-center m-5 p-5 border rounded-md bg-white">
 
-             <div className="w-full flex flex-col gap-8 items-center sm:flex-row m-5 p-5 border rounded-md bg-white">
+             <div className="w-full flex flex-col gap-8 items-center sm:flex-row m-5 p-5  rounded-md bg-white">
 
-            <div className="w-full h-36 p-5   border flex flex-col items-start rounded-md">
-                <div className=" text-black flex  w-full justify-between items-center">
+            <div className="w-full h-36 p-5 bg-[#F2EFE880]  flex flex-col items-start rounded-md">
+                <div className=" text-black  flex  w-full justify-between items-center">
                   <div>Open Projects</div>
                   <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
@@ -259,7 +259,7 @@ const Company = () => {
                 </div>
              </div>
 
-             <div className="w-full h-36 p-5   border flex flex-col items-start rounded-md">
+             <div className="w-full h-36 p-5 bg-[#F4EBF9]   flex flex-col items-start rounded-md">
                 <div className=" text-black flex  w-full justify-between items-center">
                   <div>In Progress Projects</div>
                   <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
@@ -271,7 +271,7 @@ const Company = () => {
                 </div>
              </div>
 
-             <div className="w-full h-36 p-5   border flex flex-col items-start rounded-md">
+             <div className="w-full h-36 p-5 bg-[#E5EEFFB2]   flex flex-col items-start rounded-md">
                 <div className=" text-black flex  w-full justify-between items-center">
                   <div>Closed Projects</div>
                   <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
@@ -284,9 +284,9 @@ const Company = () => {
              </div>
              </div>
 
-             <div className="w-full flex flex-col gap-8 items-center sm:flex-row p-5 border rounded-md bg-white">
+             <div className="w-full flex flex-col gap-8 items-center sm:flex-row p-5  rounded-md bg-white">
 
-             <div className="w-full h-36 p-5   border flex flex-col items-start rounded-md">
+             <div className="w-full h-36 p-5   bg-[#F2EFE8] flex flex-col items-start rounded-md">
                 <div className=" text-black flex  w-full justify-between items-center">
                   <div>Open Projects</div>
                   <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
@@ -298,7 +298,7 @@ const Company = () => {
                 </div>
              </div>
 
-             <div className="w-full h-36 p-5   border flex flex-col items-start rounded-md">
+             <div className="w-full h-36 p-5    bg-[#E8FCF6] flex flex-col items-start rounded-md">
                 <div className=" text-black flex  w-full justify-between items-center">
                   <div>In Progress Projects</div>
                   <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">

@@ -14,7 +14,7 @@ const Navbar = () => {
   const state = useSelector((state) => state.user);
   const router = useRouter();
 
-
+  console.log(state)
 
   useEffect(() => {
     const oneTimeData =    localStorage.getItem('accessToken')
@@ -113,7 +113,12 @@ const Navbar = () => {
                   className="w-10 h-10 rounded-full border-2 border-black mr-5 cursor-pointer"
                   src={state?.userDoc?.imageUrl}
                   alt="Rounded avatar"
-                  onClick={() => router.push('/profile')}
+                  onClick={() => {
+                    // console.log(state?.userDoc?.role)
+                    if(state?.userDoc?.role == "Freelancer"){
+                      router.push(`/freelancer/${state?.userDoc?._id}`)
+                    }
+                  }}
                 />
               </>
             )}
