@@ -14,7 +14,7 @@ const Navbar = () => {
   const state = useSelector((state) => state.user);
   const router = useRouter();
 
-  console.log(state)
+  // console.log(state)
 
   useEffect(() => {
     const oneTimeData =    localStorage.getItem('accessToken')

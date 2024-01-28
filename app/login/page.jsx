@@ -27,8 +27,8 @@ const Login = () => {
   const handleLogin = async (data) => {
     const email = data?.email;
     const password = data?.password;
-    console.log("watn");
-    console.log(email + " " + password);
+    // console.log(toggle);
+    // false -> freelancer
     if (email == "" || password == "") {
       toast({
         title: "Error: Login",
@@ -41,7 +41,10 @@ const Login = () => {
       const data = await axios.post("/api/login", {
         email,
         password,
+        toggle
       });
+
+
       const newData = {
         status: data.status,
         userDoc: data?.data?.userDoc,
@@ -56,10 +59,18 @@ const Login = () => {
       dispatch(logIn(newData));
       router.push("/");
     } catch (error) {
-      toast({
-        title: "Error: Login",
-        description: "Password or email doesn't match",
-      });
+      if(error?.response?.data){
+        toast({
+          title: "Error: Login",
+          description: error?.response?.data?.user,
+        });
+      }
+      else{
+        toast({
+          title: "Error: Login",
+          description: "Password or email doesn't match",
+        });
+      }
 
       console.log(error);
     }
@@ -76,7 +87,7 @@ const Login = () => {
          
               {toggle ? (
                 <>
-                  <Image src={loginTemp} alt="login temp"  width={550} height={550}/>
+                  <Image src={loginTemp} alt="login temp" className="hidden sm:block" width={550} height={550}/>
                 </>
               ) : (
                 <>
