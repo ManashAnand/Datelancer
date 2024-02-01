@@ -6,8 +6,19 @@ import Select from "react-select";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { Separator } from "@/shadcn/ui/separator";
+import axios from "axios";
+import { useParams,useRouter } from "next/navigation";
+import { useToast } from "@/shadcn/ui/use-toast";
 
 const FreelancerCompleteProfile = () => {
+  const router = useRouter()
+  const {id} = useParams()
+
+  const { toast } = useToast();
+
+  const [projectTitle, setProjectTitle] = useState("");
+  const [WorkExperience, setWorkExperience] = useState("0-2 years");
+
   const options = [
     { value: "chocolate", label: "Chocolate" },
     { value: "strawberry", label: "Strawberry" },
@@ -29,6 +40,32 @@ const FreelancerCompleteProfile = () => {
       setTags([...tags, event.target.value]);
       event.target.value = "";
     }
+  };
+
+  const handleProfile = async () => {
+    const option = setSelectedOption?.value
+    try {
+      const {data} = await axios.put(`/api/completeProfile/${id}`,{projectTitle,WorkExperience,option, value,skillValue,tags })
+      // console.log("working")
+      // console.log(data);
+      toast({
+        title: "Project Created",
+        description: `${projectTitle} is created`,
+      });
+      setProjectTitle("")
+      setWorkExperience("")
+      setValue("")
+      setSkillValue("")
+      
+    } catch (error) {
+      toast({
+        title: "Project not Created",
+        description: `${projectTitle} doesn't create due to some error`,
+      });
+      
+    }  
+
+
   };
 
   return (
@@ -55,14 +92,15 @@ const FreelancerCompleteProfile = () => {
           </div>
           <input
             type="text"
-            id="email"
-            className="mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="john.doe@company.com"
+            className="mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Your project name 😄"
+            value={projectTitle}
+            onChange={(e) => setProjectTitle(e.target.value)}
           />
 
-          <div className="text-black mt-16 font-semibold">Project title</div>
+          <div className="text-black mt-16 font-semibold">Broad Skill</div>
           <div className="text-gray-400 mt-2 font-semibold">
-            Use a suitable title which describes the kind of work clearly.
+            Choose a suitable business function .
           </div>
           <Select
             defaultValue={selectedOption}
@@ -164,36 +202,115 @@ const FreelancerCompleteProfile = () => {
           </div>
 
           <div className=" rounded-md flex flex-wrap gap-4 mt-2">
-                <div className="p-4 border-gray-200 border-2 rounded-lg">
-                  <input type="checkbox" className="border rounded-xl" name="" id="expYear" />
-                    <div className="text-black">0-2 years</div>
-                </div>
-                <div className="p-4 border-gray-200 border-2 rounded-lg">
-                  <input type="checkbox" className="border " name="" id="expYear" />
-                    <div className="text-black">3-5 years</div>
-                </div>
-                <div className="p-4 border-gray-200 border-2 rounded-lg">
-                  <input type="checkbox" className="border " name="" id="expYear" />
-                    <div className="text-black">6-10 years</div>
-                </div>
-                <div className="p-4 border-gray-200 border-2 rounded-lg">
-                  <input type="checkbox" className="border " name="" id="expYear" />
-                    <div className="text-black">11-15 years</div>
-                </div>
-                <div className="p-4 border-gray-200 border-2 rounded-lg">
-                  <input type="checkbox" className="border " name="" id="expYear" />
-                    <div className="text-black">16-20 years</div>
-                </div>
-                <div className="p-4 border-gray-200 border-2 rounded-lg">
-                  <input type="checkbox" className="border " name="" id="expYear" />
-                    <div className="text-black">21-25 years</div>
-                </div>
-                <div className="p-4 border-gray-200 border-2 rounded-lg">
-                  <input type="checkbox" className="border " name="" id="expYear" />
-                    <div className="text-black">25+ years</div>
-                </div>
+            <div className="p-4 border-gray-200 border-2 rounded-lg">
+              <input
+                type="radio"
+                className="border rounded-xl"
+                name="workExperience"
+                id="expYear"
+                onClick={() => setWorkExperience("0-2 years")}
+              />
+              <div
+                className="text-black"
+              >
+                0-2 years
+              </div>
+            </div>
+            <div className="p-4 border-gray-200 border-2 rounded-lg">
+              <input
+                type="radio"
+                className="border "
+                name="workExperience"
+                id="expYear"
+                onClick={() => setWorkExperience("3-5 years")}
+              />
+              <div
+                className="text-black"
+              >
+                3-5 years
+              </div>
+            </div>
+            <div className="p-4 border-gray-200 border-2 rounded-lg">
+              <input
+                type="radio"
+                className="border "
+                name="workExperience"
+                id="expYear"
+                onClick={() => setWorkExperience("6-10 years")}
+              />
+              <div
+                className="text-black"
+              >
+                6-10 years
+              </div>
+            </div>
+            <div className="p-4 border-gray-200 border-2 rounded-lg">
+              <input
+                type="radio"
+                className="border "
+                name="workExperience"
+                id="expYear"
+                onClick={() => setWorkExperience("11-15 years")}
+              />
+              <div
+                className="text-black"
+              >
+                11-15 years
+              </div>
+            </div>
+            <div className="p-4 border-gray-200 border-2 rounded-lg">
+              <input
+                type="radio"
+                className="border "
+                name="workExperience"
+                id="expYear"
+                onClick={() => setWorkExperience("16-20 years")}
+              />
+              <div
+                className="text-black"
+              >
+                16-20 years
+              </div>
+            </div>
+            <div className="p-4 border-gray-200 border-2 rounded-lg">
+              <input
+                type="radio"
+                className="border "
+                name="workExperience"
+                id="expYear"
+                onClick={() => setWorkExperience("21-25 years")}
+              />
+              <div
+                className="text-black"
+              >
+                21-25 years
+              </div>
+            </div>
+            <div className="p-4 border-gray-200 border-2 rounded-lg">
+              <input
+                type="radio"
+                className="border "
+                name="workExperience"
+                id="expYear"
+                onClick={() => setWorkExperience("25+ years")}
+              />
+              <div
+                className="text-black"
+              >
+                25+ years
+              </div>
+            </div>
           </div>
 
+          <div className="text-black mt-16 font-semibold">
+            <button
+              type="button"
+              className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+              onClick={handleProfile}
+            >
+              Submit
+            </button>
+          </div>
         </div>
       </div>
     </>

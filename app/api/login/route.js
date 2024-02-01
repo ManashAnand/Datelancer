@@ -8,7 +8,7 @@ export async function POST(req) {
   await connectDB();
 
   try {
-    let userDoc = await UserModel.findOne({ email });
+    let userDoc = await UserModel.findOne({ email }).populate("projects");
     // console.log(userDoc)
 
     if(!toggle && userDoc?.role != 'Freelancer'){
@@ -25,6 +25,7 @@ export async function POST(req) {
     }
     const passOk = bcrypt.compareSync(password, userDoc.password);
     if (passOk) {
+      userDoc.password="";
       return NextResponse.json(
         { user: "User is registered", userDoc },
         { status: 200 }
