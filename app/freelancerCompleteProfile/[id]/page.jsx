@@ -25,6 +25,7 @@ const FreelancerCompleteProfile = () => {
     { value: "vanilla", label: "Vanilla" },
   ];
 
+
   const [selectedOption, setSelectedOption] = useState(null);
 
   const [value, setValue] = useState("");
@@ -43,7 +44,8 @@ const FreelancerCompleteProfile = () => {
   };
 
   const handleProfile = async () => {
-    const option = setSelectedOption?.value
+    const option = selectedOption?.value
+    // console.log(option)
     try {
       const {data} = await axios.put(`/api/completeProfile/${id}`,{projectTitle,WorkExperience,option, value,skillValue,tags })
       // console.log("working")
@@ -302,7 +304,14 @@ const FreelancerCompleteProfile = () => {
             </div>
           </div>
 
-          <div className="text-black mt-16 font-semibold">
+          <div className="text-black mt-16 font-semibold  flex justify-between items-center">
+            <button
+              type="button"
+              className="text-black   focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none dark:focus:ring-blue-800 border border-black hover:bg-black hover:text-white"
+             
+            >
+            Back
+            </button>
             <button
               type="button"
               className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
