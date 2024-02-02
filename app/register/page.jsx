@@ -2,10 +2,11 @@
 
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
-
 import { useDispatch } from "react-redux";
-
+import Image from 'next/image'
 import { logIn } from "@/redux/slices/UserSlice";
+import signup1 from '../assets/signup1.png'
+import signup2 from '../assets/signup2.png'
 
 import { useForm } from "react-hook-form";
 
@@ -87,7 +88,7 @@ const Register = () => {
       </div>
       {/* main register */}
 
-      <section className="text-gray-600 body-font">
+      <section className="text-gray-600 body-font   min-w-[70%]">
         <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
           <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
             <div className=" w-full text-center text-xl mb-4">
@@ -207,12 +208,31 @@ const Register = () => {
               </div>
             </div>
           </div>
-          <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
-            <img
-              className="object-cover object-center rounded"
-              alt="hero"
-              src="https://dummyimage.com/720x600"
-            />
+          <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 ">
+        
+            <div className="min-w-full flex flex-col">
+              <div className="min-w-full flex justify-start items-end">
+                <Image
+                  className="object-cover object-center rounded"
+                  alt="hero"
+                  src={signup1}
+                  height={200}
+                  width={200}
+                />
+               
+              </div>
+              
+              <div className="min-w-full flex justify-end items-end">
+                <Image
+                  className="object-cover object-center rounded"
+                  alt="hero"
+                  src={signup2}
+                  height={200}
+                  width={200}
+                />
+            
+              </div>
+            </div>
           </div>
         </div>
       </section>
