@@ -81,6 +81,9 @@ const FreelancerCompleteProfile = () => {
             <div className="text-black border p-5 bg-white rounded-md mt-5">
               review and submit
             </div>
+            <div className="text-black border p-5 bg-white rounded-md mt-5 hover:bg-gray-200 cursor-pointer" onClick={() =>  router.push(`/myprojects/${id}`)}>
+              My Projects
+            </div>
           </div>
         </div>
         <div className=" sm:w-[75%] w-full  py-10 sm:px-32 px-4 mb-8">
