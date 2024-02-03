@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+import { ProjectModel } from '@/Models/ProjectModel';
 
 const UserSchema = mongoose.Schema({
   username: { type: String, required: true, min: 4,trim:true },
@@ -9,6 +10,7 @@ const UserSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Project",
     default:[]
+    
   }],
 },{
   timestamps: true 
@@ -16,4 +18,4 @@ const UserSchema = mongoose.Schema({
 
 const UserModel =mongoose.models.User || mongoose.model("User", UserSchema);
 
-module.exports = UserModel;
+export { UserModel };

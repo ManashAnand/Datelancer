@@ -1,4 +1,4 @@
-import UserModel from "@/Models/UserModel";
+import {UserModel} from "@/Models/UserModel";
 import { connectDB } from "@/lib/mongodb";
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
@@ -36,6 +36,7 @@ export async function POST(req) {
       { status: 201 }
     );
   } catch (error) {
+    console.log(error)
     return NextResponse.json(
       { user: "Error in fetching user data", error },
       { status: 500 }

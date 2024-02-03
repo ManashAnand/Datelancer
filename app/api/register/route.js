@@ -1,4 +1,4 @@
-import UserModel from "@/Models/UserModel";
+import {UserModel} from "@/Models/UserModel";
 import { connectDB } from "@/lib/mongodb";
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
