@@ -10,7 +10,7 @@ import "react-circular-progressbar/dist/styles.css";
 import { useParams,useRouter } from 'next/navigation'
 import { useDispatch } from "react-redux";
 import { logOut } from "@/redux/slices/UserSlice";
-const company = () => {
+const Company = () => {
     const {id} = useParams()
     const router = useRouter()
     const dispatch = useDispatch()
@@ -312,4 +312,4 @@ const company = () => {
   )
 }
 
-export default company
+export default Company
