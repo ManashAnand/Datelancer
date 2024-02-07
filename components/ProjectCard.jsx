@@ -1,4 +1,5 @@
 import React from 'react'
+import parse from 'html-react-parser';
 
 const ProjectCard = ({item}) => {
     // console.log(item)
@@ -16,7 +17,8 @@ const ProjectCard = ({item}) => {
       {item?.projectTitle}
     </h5>
     <p className="block font-sans text-base antialiased font-light leading-relaxed text-inherit">
-       {item?.projectDescription}
+    {parse(item?.projectDescription)}
+      {/* {item?.projectDescription} */}
     </p>
   </div>
   <p className=" px-6 block font-sans text-base antialiased font-light leading-relaxed text-inherit">

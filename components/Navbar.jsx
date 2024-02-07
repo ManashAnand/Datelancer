@@ -117,6 +117,8 @@ const Navbar = () => {
                     // console.log(state?.userDoc?.role)
                     if(state?.userDoc?.role == "Freelancer"){
                       router.push(`/freelancer/${state?.userDoc?._id}`)
+                    } else {
+                      router.push(`/HR/${state?.userDoc?._id}`)
                     }
                   }}
                 />

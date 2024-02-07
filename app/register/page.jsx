@@ -56,7 +56,6 @@ const Register = () => {
         confirmpassword,
         role,
       });
-      console.log(res);
       if (res.status == 200) {
         router.push("/login");
       } else {

@@ -87,7 +87,7 @@ const Login = () => {
          
               {toggle ? (
                 <>
-                  <Image src={loginTemp} alt="login temp" className="hidden sm:block" width={550} height={550}/>
+                  <Image src={loginTemp} alt="login temp" className="hidden md:block" width={550} height={550}/>
                 </>
               ) : (
                 <>
